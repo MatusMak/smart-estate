@@ -38,6 +38,7 @@ class Detector():
                 partial = provider['handler'].provide(lat, lon)
                 score += partial['summary']['score'] * provider['weight']
 
+                partial['id'] = provider['id']
                 partial['title'] = provider['title']
                 providers.append(partial)
 
