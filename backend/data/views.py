@@ -8,3 +8,8 @@ from .models import *
 def test(request):
     tests = Test.objects.all()
     return JsonResponse(serialize('json', tests), safe=False)
+
+
+# Datum a cas; Parkoviste; Obsazenost; Kapacita
+def analyze_data():
+    pass
