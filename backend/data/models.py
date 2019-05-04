@@ -1,14 +1,5 @@
 from django.db import models
 
-TIMEBLOCKS = [
-    (6, 'night'),
-    (1, 'morning'),
-    (2, 'forenoon'),
-    (3, 'noon'),
-    (4, 'afternoon'),
-    (5, 'evening'),
-]
-
 
 class Parking(models.Model):
     name = models.CharField(max_length=200)
@@ -49,4 +40,4 @@ class Usage(models.Model):
     weight = models.PositiveSmallIntegerField()
 
     def __str__(self):
-        return f'{self.parking} - {self.full}'
+        return f'{self.parking} - {self.full//self.weight}'
