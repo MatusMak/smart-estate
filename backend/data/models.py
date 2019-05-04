@@ -27,10 +27,26 @@ class Parking(models.Model):
         null=True
     )
 
+    def __str__(self):
+        return f'{self.name} ({self.capacity})'
+
+
+class Timeslot(models.Model):
+    name = models.CharField(max_length=50)
+
+    start = models.TimeField()
+    end = models.TimeField()
+
+    def __str__(self):
+        return self.name
+
 
 class Usage(models.Model):
     parking = models.ForeignKey(Parking, on_delete=models.CASCADE)
-    timeblock = models.CharField(choices=TIMEBLOCKS)
+    timeslot = models.ForeignKey(Timeslot, on_delete=models.PROTECT)
 
     full = models.PositiveSmallIntegerField()
     weight = models.PositiveSmallIntegerField()
+
+    def __str__(self):
+        return f'{self.parking} - {self.full}'
