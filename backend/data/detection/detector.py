@@ -16,6 +16,7 @@ categories = [
     },
 ]
 
+
 class Detector():
     def detect(this, lat, lon):
         lat = float(lat)
