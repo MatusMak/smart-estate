@@ -15,7 +15,7 @@ class ParkingProvider():
                 'absolute': parking.capacity-u.full//u.weight,
                 'capacity': parking.capacity,
             })
-        score = int(round(200*(((parking.capacity-u.full//u.weight)/parking.capacity)**(1/6)-0.5), 0))
+        score = int(round(400*max((((parking.capacity-u.full//u.weight)/parking.capacity)**(1/6)-0.75), 0), 0))
 
         return {
             'summary': {
