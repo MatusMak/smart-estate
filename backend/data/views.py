@@ -10,8 +10,11 @@ def test(request):
     tests = Test.objects.all()
     return JsonResponse(serialize('json', tests), safe=False)
 
+# Datum a cas; Parkoviste; Obsazenost; Kapacita
+def analyze_data():
+    pass
 
 def detect(request, lat, lon):
-	detector = Detector()
-	result = detector.detect(lat, lon)
-	return JsonResponse(result, safe=False)
+    detector = Detector()
+    result = detector.detect(lat, lon)
+    return JsonResponse(result, safe=False)
