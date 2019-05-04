@@ -4,12 +4,12 @@ from django.core.serializers import serialize
 from datetime import time
 
 from .models import *
+from .detection.detector import Detector
 
 
 def test(request):
     tests = Test.objects.all()
     return JsonResponse(serialize('json', tests), safe=False)
-
 
 # Datum a cas; Parkoviste; Obsazenost; Kapacita
 def analyze_data():
@@ -29,3 +29,9 @@ def analyze_data():
             name = temp[1][4:]
             full = int(temp[2])
             capacity = int(temp[3])
+
+
+def detect(request, lat, lon):
+    detector = Detector()
+    result = detector.detect(lat, lon)
+    return JsonResponse(result, safe=False)
