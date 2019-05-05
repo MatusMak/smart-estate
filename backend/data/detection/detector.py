@@ -49,13 +49,16 @@ class Detector():
 
             for provider in category['providers']:
                 partial = provider['handler'].provide(lat, lon)
-                scores.append(partial['summary']['score'] * provider['weight'])
+                scores.append({
+                    'score': partial['summary']['score'],
+                    'weight': provider['weight']
+                })
 
                 partial['id'] = provider['id']
                 partial['title'] = provider['title']
                 providers.append(partial)
 
-            score = sum(scores) / len(scores)
+            score = this.avgScore(scores)
 
             result['categories'].append({
                 'title': category['title'],
@@ -69,9 +72,12 @@ class Detector():
                 'providers': providers,
             })
 
-            result['summary']['score'].append(score * category['weight'])
+            result['summary']['score'].append({
+                'score': score,
+                'weight': category['weight']
+            })
 
-        result['summary']['score'] = sum(result['summary']['score']) / len(result['summary']['score'])
+        result['summary']['score'] = this.avgScore(result['summary']['score'])
         result['summary']['grade'] = this.scoreToGrade(result['summary']['score'])
         return result
 
@@ -81,3 +87,13 @@ class Detector():
         elif score > 40:
             return 'okay'
         return 'bad'
+
+    def avgScore(this, scores):
+        scoreSum = 0
+        lenSum = 0
+
+        for partial in scores:
+            scoreSum += partial['score'] * partial['weight']
+            lenSum += partial['weight']
+
+        return scoreSum / lenSum
