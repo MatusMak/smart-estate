@@ -9,7 +9,7 @@ class PlaygroundsProvider():
         with open('api_key.txt', 'r') as f:
             headers = {
                 'Content-Type': 'application/json; charset=utf-8',
-                'x-api-key': f.readlines()[0],
+                'x-api-key': f.readlines()[0].strip(),
             }
         request = Request(f'https://api.mojepraha.eu/v3/playgrounds/?latlng={str(lat)},{str(lon)}&range={p_range}', headers=headers)
 
