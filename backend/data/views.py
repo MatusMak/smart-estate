@@ -11,6 +11,7 @@ from .models import *
 from .detection.detector import Detector
 
 import json
+import requests
 
 
 def test(request):

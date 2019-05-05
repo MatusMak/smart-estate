@@ -1,5 +1,6 @@
 from .providers.parking import ParkingProvider
 from .providers.aircondition import AirConditionProvider
+from .providers.playgrounds import PlaygroundsProvider
 
 categories = [
     {
@@ -24,6 +25,19 @@ categories = [
                 'id': 'aircondition',
                 'title': 'Air Condition',
                 'handler': AirConditionProvider(),
+                'weight': 1,
+            }
+        ],
+    },
+    {
+        'title': 'Places',
+        'icon': 'ni ni-shop',
+        'weight': 1,
+        'providers': [
+            {
+                'id': 'places-playgrounds',
+                'title': 'Playgrounds',
+                'handler': PlaygroundsProvider(),
                 'weight': 1,
             }
         ],
