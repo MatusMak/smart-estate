@@ -156,6 +156,25 @@
 
                         </base-table>
                       </div>
+
+
+                      <!-- PLACES -->
+                      <div v-if="detailsModal.provider != null && detailsModal.provider.id.startsWith('places-')" class="table-responsive">
+                        <base-table class="table align-items-center table-flush"
+                                    tbody-classes="list"
+                                    :data="detailsModal.provider.data">
+                          <template slot="columns">
+                            <th>Place</th>
+                            <th>Address</th>
+                          </template>
+
+                          <template slot-scope="{row}">
+                            <td><strong>{{ row.title }}</strong></td>
+                            <td>{{ row.address }} %</td>
+                          </template>
+
+                        </base-table>
+                      </div>
                    </div>
                    <template slot="footer">
                        <base-button type="secondary" @click="detailsModal.shown = false">Close</base-button>
