@@ -8,3 +8,7 @@ Will add later :)
 2. Run application:
     a) in development: `npm run dev`
     b) to build production files: `npm run build`
+
+## Run backend
+
+1. Create `backend/api_key.txt`, where you must include your `MojaPraha` API key

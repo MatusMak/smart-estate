@@ -11,7 +11,7 @@
                         <div id="map-canvas" class="map-canvas" data-lat="40.748817" data-lng="-73.985428" style="height: 400px;"></div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div v-if="place != null" class="col-6">
                   <tabs fill class="flex-column flex-md-row">
                     <card shadow>
                         <tab-pane>
@@ -109,6 +109,9 @@
                     </card>
                   </tabs>
                 </div>
+                <div v-else class="col-6 loading-indicator">
+                  <i class="fas fa-spinner fa-pulse"></i>
+                </div>
 
                 <div class="col-12">
                  <modal :show.sync="detailsModal.shown">
@@ -194,7 +197,7 @@
           shown: false,
           provider: null,
         },
-        place: {
+        place: null,/*{
           summary: {
             grade: 'okay',
             score: 55,
@@ -243,7 +246,7 @@
               },
             },
           ],
-        },
+        },*/
       };
     },
     methods: {
@@ -315,6 +318,7 @@
         }
         marker = L.marker(latlng).addTo(map);
 
+        component.place = null;
         component.callApi(`detect/${latlng.lat}/${latlng.lng}`, 'GET', null, data => {
           component.place = data;
         });

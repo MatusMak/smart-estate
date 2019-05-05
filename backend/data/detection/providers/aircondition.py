@@ -6,7 +6,6 @@ class AirConditionProvider():
     def provide(self, lat, lon):
         station = self.get_nearest(lat, lon)
         conditions = self.get_conditions()
-        print(station.SO2)
 
         scores = {}
 
