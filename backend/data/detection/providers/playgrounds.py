@@ -6,10 +6,11 @@ class PlaygroundsProvider():
 
     def provide(self, lat, lon):
         p_range = 500
-        headers = {
-            'Content-Type': 'application/json; charset=utf-8',
-            'x-api-key': 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaGFja2F0aG9uNSIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNTM5MzU2NjUxfQ.XJWj-xHzQxPBtS-ZlXIYVPNdk6zB6jX0wkfuiGb9ivvK5Oo10wEx9lwwCoUqd4fhQZyFZJku6tnAZXaYU6TCXw'
-        }
+        with open('api_key.txt', 'r') as f:
+            headers = {
+                'Content-Type': 'application/json; charset=utf-8',
+                'x-api-key': f.readlines()[0],
+            }
         request = Request(f'https://api.mojepraha.eu/v3/playgrounds/?latlng={str(lat)},{str(lon)}&range={p_range}', headers=headers)
 
         response = urlopen(request).read().decode('utf8').replace("'", '"')
