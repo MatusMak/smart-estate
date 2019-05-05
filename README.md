@@ -10,9 +10,9 @@ Users can either browse the map, where they can explore any place in the city, o
 
 ## How we built it
 
-For backend, we have used Django as a webserver. For raking of places, we have created a custom modular detection system, which allows us to seamlessly and quickly add new providers and adjust their weight in the final calculations as necessary.
+For backend, we have used `Django` as a webserver. For ranking of places, we have created a custom modular detection system, which allows us to seamlessly and quickly add new providers and adjust their weight in the final calculations as necessary.
 
-For frontend, we have used Vue.js with Bootstrap-Vue. Our page is built on top of Vue Argon scaffolding panel. Maps are provided by Open Street Map.
+For frontend, we have used `Vue.js` with `Bootstrap-Vue`. Our page is built on top of `Vue Argon` scaffolding panel. Maps are provided by `Open Street Map`.
 
 # Try it yourself
 
@@ -27,7 +27,7 @@ For frontend, we have used Vue.js with Bootstrap-Vue. Our page is built on top o
 
 1. Create `backend/api_key.txt`, where you must include your `MojaPraha` API key
 2. Install Django `pip install Django==2.2`
-3. Make migrations `manage.py makemigrations`
+3. Make migrations `manage.py makemigrations data`
 4. Apply migrations `manage.py migrate`
 5. Create superuser `manage.py createsuperuser`
 6. Run server `manage.py runserver`
