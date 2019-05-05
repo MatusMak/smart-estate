@@ -1,5 +1,7 @@
 # About smart estate
 
+![alt text](https://github.com/MatusMak/smart-estate/blob/master/design/youtube_banner.png)
+
 ## What it does
 
 We have decided to collect various information from available open data providers and public data sets and use them to rank places. This allows us to look at any given area from many different, often unrelated points of view, which results in a very good grading of such regions.
