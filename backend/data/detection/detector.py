@@ -1,6 +1,6 @@
-from .providers.parking import ParkingProvider
-from .providers.aircondition import AirConditionProvider
-from .providers.playgrounds import PlaygroundsProvider
+from .providers.transport import ParkingProvider
+from .providers.health import AirConditionProvider, MedicalInstitutionsProvider
+from .providers.places import PlaygroundsProvider, GardensProvider, LibrariesProvider
 
 categories = [
     {
@@ -9,8 +9,8 @@ categories = [
         'weight': 1,
         'providers': [
             {
-                'id': 'parking',
-                'title': 'Parking',
+                'id': 'parking-availibility',
+                'title': 'Parking Availability',
                 'handler': ParkingProvider(),
                 'weight': 1,
             }
@@ -21,6 +21,12 @@ categories = [
         'icon': 'ni ni-favourite-28',
         'weight': 1,
         'providers': [
+            {
+                'id': 'places-medicine',
+                'title': 'Medical Institutions',
+                'handler': MedicalInstitutionsProvider(),
+                'weight': 1,
+            },
             {
                 'id': 'aircondition',
                 'title': 'Air Condition',
@@ -39,10 +45,23 @@ categories = [
                 'title': 'Playgrounds',
                 'handler': PlaygroundsProvider(),
                 'weight': 1,
+            },
+            {
+                'id': 'places-gardens',
+                'title': 'Gardens',
+                'handler': GardensProvider(),
+                'weight': 1,
+            },
+            {
+                'id': 'places-libraries',
+                'title': 'Libraries',
+                'handler': LibrariesProvider(),
+                'weight': 1,
             }
         ],
     },
 ]
+
 
 class Detector():
     def detect(this, lat, lon):
