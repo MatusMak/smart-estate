@@ -9,7 +9,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: 'dashboard',
+      redirect: 'review',
       component: DashboardLayout,
       children: [
         {
@@ -31,8 +31,8 @@ export default new Router({
           component: () => import(/* webpackChunkName: "demo" */ './views/UserProfile.vue')
         },
         {
-          path: '/maps',
-          name: 'maps',
+          path: '/review',
+          name: 'review',
           component: () => import(/* webpackChunkName: "demo" */ './views/Maps.vue')
         },
         {
