@@ -119,8 +119,8 @@
                       <h5 v-if="detailsModal.provider != null" class="modal-title" id="exampleModalLabel">{{ detailsModal.provider.title }}</h5>
                    </template>
                    <div>
-                      <!-- PARKING -->
-                      <div v-if="detailsModal.provider != null && detailsModal.provider.id == 'parking'" class="table-responsive">
+                      <!-- PARKING AVAILABILITY -->
+                      <div v-if="detailsModal.provider != null && detailsModal.provider.id == 'parking-availability'" class="table-responsive">
                         <base-table class="table align-items-center table-flush"
                                     tbody-classes="list"
                                     :data="detailsModal.provider.data">
@@ -134,6 +134,27 @@
                             <td><strong>{{ row.title }}</strong></td>
                             <td>{{ row.capacity }}</td>
                             <td>{{ row.absolute }} ({{ row.relative.toFixed(2) }} %)</td>
+                          </template>
+
+                        </base-table>
+                      </div>
+
+
+                      <!-- PARKING PLACES -->
+                      <div v-if="detailsModal.provider != null && detailsModal.provider.id == 'parking-places'" class="table-responsive">
+                        <base-table class="table align-items-center table-flush"
+                                    tbody-classes="list"
+                                    :data="detailsModal.provider.data">
+                          <template slot="columns">
+                            <th>Address</th>
+                            <th>Type</th>
+                            <th>Capacity</th>
+                          </template>
+
+                          <template slot-scope="{row}">
+                            <td><strong>{{ row.address }}</strong></td>
+                            <td>{{ row.type }}</td>
+                            <td>{{ row.capacity }}</td>
                           </template>
 
                         </base-table>
