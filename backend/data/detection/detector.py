@@ -1,4 +1,4 @@
-from .providers.transport import ParkingProvider
+from .providers.transport import ParkingProvider, ParkingAvailabilityProvider
 from .providers.health import AirConditionProvider, MedicalInstitutionsProvider
 from .providers.places import PlaygroundsProvider, GardensProvider, LibrariesProvider
 
@@ -8,10 +8,16 @@ categories = [
         'icon': 'ni ni-bus-front-12',
         'weight': 1,
         'providers': [
+#            {
+#                'id': 'parking-slots',
+#                'title': 'Parking',
+#                'handler': ParkingProvider(),
+#                'weight': 1,
+#            },
             {
-                'id': 'parking-availibility',
+                'id': 'parking-availability',
                 'title': 'Parking Availability',
-                'handler': ParkingProvider(),
+                'handler': ParkingAvailabilityProvider(),
                 'weight': 1,
             }
         ],
