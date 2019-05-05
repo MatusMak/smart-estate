@@ -194,7 +194,7 @@
 
                           <template slot-scope="{row}">
                             <td><strong>{{ row.title }}</strong></td>
-                            <td>{{ row.address }} %</td>
+                            <td>{{ row.address }}</td>
                           </template>
 
                         </base-table>

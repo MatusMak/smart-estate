@@ -144,61 +144,8 @@
   export default {
     data() {
       return {
-        detailsModal: {
-          shown: false,
-          provider: null,
-        },
         place1: null,
-        place2: null,/*{
-          summary: {
-            grade: 'okay',
-            score: 55,
-          },
-          categories: [
-            {
-              title: 'Transport',
-              icon: 'ni ni-bus-front-12',
-              summary: {
-                grade: 'good',
-                score: 70,
-              },
-              providers: [
-                {
-                  id: 'parking',
-                  summary: {
-                    grade: "good",
-                    score: 50,
-                  },
-                  data: [
-                    {
-                      title: 'Afternoon',
-                      relative: 50,
-                      absolute: 33,
-                      capacity: 66,
-                    }
-                  ],
-                  title: "Parking",
-                },
-              ],
-            },
-            {
-              title: 'Health',
-              icon: 'ni ni-favourite-28',
-              summary: {
-                grade: 'okay',
-                score: 50,
-              },
-            },
-            {
-              title: 'Municipal',
-              icon: 'ni ni-shop',
-              summary: {
-                grade: 'bad',
-                score: 20,
-              },
-            },
-          ],
-        },*/
+        place2: null,
       };
     },
     methods: {

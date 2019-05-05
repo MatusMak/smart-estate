@@ -41,6 +41,11 @@ export default new Router({
           component: () => import(/* webpackChunkName: "demo" */ './views/Compare.vue')
         },
         {
+          path: '/recommended',
+          name: 'recommended',
+          component: () => import(/* webpackChunkName: "demo" */ './views/Recommended.vue')
+        },
+        {
           path: '/tables',
           name: 'tables',
           component: () => import(/* webpackChunkName: "demo" */ './views/Tables.vue')
