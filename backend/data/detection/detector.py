@@ -1,4 +1,5 @@
 from .providers.parking import ParkingProvider
+from .providers.aircondition import AirConditionProvider
 
 categories = [
     {
@@ -14,8 +15,20 @@ categories = [
             }
         ],
     },
+    {
+        'title': 'Health',
+        'icon': 'ni ni-favourite-28',
+        'weight': 1,
+        'providers': [
+            {
+                'id': 'aircondition',
+                'title': 'Air Condition',
+                'handler': AirConditionProvider(),
+                'weight': 1,
+            }
+        ],
+    },
 ]
-
 
 class Detector():
     def detect(this, lat, lon):
@@ -25,22 +38,24 @@ class Detector():
         result = {
             'summary': {
                 'grade': None,
-                'score': 0,
+                'score': [],
             },
             'categories': [],
         }
 
         for category in categories:
             providers = []
-            score = 0
+            scores = []
 
             for provider in category['providers']:
                 partial = provider['handler'].provide(lat, lon)
-                score += partial['summary']['score'] * provider['weight']
+                scores.append(partial['summary']['score'] * provider['weight'])
 
                 partial['id'] = provider['id']
                 partial['title'] = provider['title']
                 providers.append(partial)
+
+            score = sum(scores) / len(scores)
 
             result['categories'].append({
                 'title': category['title'],
@@ -54,8 +69,9 @@ class Detector():
                 'providers': providers,
             })
 
-            result['summary']['score'] += score * category['weight']
+            result['summary']['score'].append(score * category['weight'])
 
+        result['summary']['score'] = sum(result['summary']['score']) / len(result['summary']['score'])
         result['summary']['grade'] = this.scoreToGrade(result['summary']['score'])
         return result
 

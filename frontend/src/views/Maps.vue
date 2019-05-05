@@ -24,7 +24,7 @@
                                 <badge v-if="place.summary.grade == 'good'" type="success">Good</badge>
                                 <badge v-if="place.summary.grade == 'okay'" type="warning">Okay</badge>
                                 <badge v-if="place.summary.grade == 'bad'" type="danger">Bad</badge>
-                                <span class="small">&nbsp;({{ place.summary.score }} %)</span>
+                                <span class="small">&nbsp;({{ place.summary.score.toFixed(2) }} %)</span>
                               </h1>
 
                               <div class="card shadow">
@@ -48,7 +48,7 @@
                                         <badge v-if="row.summary.grade == 'okay'" type="warning">Okay</badge>
                                         <badge v-if="row.summary.grade == 'bad'" type="danger">Bad</badge>
                                       </td>
-                                      <td>{{ row.summary.score }} %</td>
+                                      <td>{{ row.summary.score.toFixed(2) }} %</td>
                                     </template>
 
                                   </base-table>
@@ -67,7 +67,7 @@
                                 <badge v-if="category.summary.grade == 'good'" type="success">Good</badge>
                                 <badge v-if="category.summary.grade == 'okay'" type="warning">Okay</badge>
                                 <badge v-if="category.summary.grade == 'bad'" type="danger">Bad</badge>
-                                <span class="small">&nbsp;({{ category.summary.score }} %)</span>
+                                <span class="small">&nbsp;({{ category.summary.score.toFixed(2) }} %)</span>
                               </h1>
 
                               <div class="card shadow">
@@ -92,7 +92,7 @@
                                         <badge v-if="row.summary.grade == 'okay'" type="warning">Okay</badge>
                                         <badge v-if="row.summary.grade == 'bad'" type="danger">Bad</badge>
                                       </td>
-                                      <td>{{ row.summary.score }} %</td>
+                                      <td>{{ row.summary.score.toFixed(2) }} %</td>
                                       <td>
                                         <base-button v-if="row.data != null" type="primary" size="sm" @click="displayDetails(row)">
                                           Details
@@ -130,7 +130,28 @@
                           <template slot-scope="{row}">
                             <td><strong>{{ row.title }}</strong></td>
                             <td>{{ row.capacity }}</td>
-                            <td>{{ row.absolute }} ({{ row.relative }} %)</td>
+                            <td>{{ row.absolute }} ({{ row.relative.toFixed(2) }} %)</td>
+                          </template>
+
+                        </base-table>
+                      </div>
+
+
+                      <!-- AIR CONDITIONING -->
+                      <div v-if="detailsModal.provider != null && detailsModal.provider.id == 'aircondition'" class="table-responsive">
+                        <base-table class="table align-items-center table-flush"
+                                    tbody-classes="list"
+                                    :data="detailsModal.provider.data">
+                          <template slot="columns">
+                            <th>Gas</th>
+                            <th>Level</th>
+                            <th>Score</th>
+                          </template>
+
+                          <template slot-scope="{row}">
+                            <td><strong>{{ row.code }}</strong></td>
+                            <td>{{ row.level.toFixed(2) }} µg/m³</td>
+                            <td>{{ row.score }} %</td>
                           </template>
 
                         </base-table>
@@ -280,7 +301,7 @@
         });
       }
 
-      map = L.map('map-canvas').setView([lat, lon], 15);
+      map = L.map('map-canvas').setView([lat, lon], 13);
       L.tileLayer(theme, {
         minZoom: 1,
         maxZoom: 20
